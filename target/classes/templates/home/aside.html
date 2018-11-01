@@ -1,0 +1,53 @@
+[#macro aside]
+[#global basePath=request.contextPath]
+<script type="text/javascript">
+	function asidebtnUrl(url) {
+		window.location.href="${basePath}"+url;
+	}
+</script>
+
+ <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+       [#if RequestParameters.choseFlag?? && RequestParameters.choseFlag =='index']
+        <li class="active treeview">
+        [#else]
+        <li class="treeview">
+        [/#if]
+          <a href="javascript:void(0)" onclick="asidebtnUrl('/web/home/index?choseFlag=index')">
+            <i class="fa fa-home"></i> <span>首页管理</span>
+          </a>
+        </li>
+         [#if RequestParameters.choseFlag?? && RequestParameters.choseFlag =='fault']
+        <li class="active treeview">
+        [#else]
+        <li class="treeview">
+        [/#if]
+        	<a href="javascript:void(0)" onclick="asidebtnUrl('/web/home/index?choseFlag=fault')">
+        	<i class="fa fa-book"></i> <span>告警管理</span></a>
+        </li>
+         [#if RequestParameters.choseFlag?? && RequestParameters.choseFlag =='task']
+        <li class="active treeview">
+        [#else]
+        <li class="treeview">
+        [/#if]
+        <a href="javascript:void(0)" onclick="asidebtnUrl('/web/home/index?choseFlag=res')"><i class="fa fa-warning"></i> <span>任务管理</span></a>
+        [#--]
+        </li>
+         [#if RequestParameters.choseFlag?? && RequestParameters.choseFlag =='res']
+        <li class="active treeview">
+        [#else]
+        <li class="treeview">
+        [/#if]
+        <a href="javascript:void(0)"><i class="fa fa-desktop"></i> <span>资源管理</span></a>
+        </li>
+        [--]
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+[/#macro]
+

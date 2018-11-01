@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  ######################### NMSW系统导航菜单   by Caijinpeng ##################################
+	1、id: 导航菜单ID
+    2、title：导航菜单名称
+    3、il8n_name: 导航菜单国际化key
+    4、parentId: 父节点 ID   
+    5、oper: 操作权限ID
+    6、isdisplay: 判断该节点是否显示(必须)
+    7、isdefault: 是否为初始化、默认是首页  [只需要在一级节点上定义，而二级节点上不需要]
+    
+    8、url: 导航url 
+    9、className： 导航菜单样式class
+    10、icon: 导航菜单icon
+    11、 extstr1: 扩展字段1
+    12、extstr2: 扩展字段2
+    
+    注意：1、变量  {@appScope.ProjectUrl}：值为项目完整路径。如：http://192.168.16.86:8080/nmsw (或 http://caijinpeng.ultrapower.com/nmsw)
+     2、变量  {@appScope.Url}: 值为 项目所在服务器的"服务器名字和端口"。如：http://192.168.16.86:8080 (或 http://caijinpeng.ultrapower.com)
+     3、变量  {@appScope.Style}: 值为 项目所使用的皮肤样式。如：excellenceblue
+     4、变量  {@appScope.User}: 值为 登录用户名称. 如：root
+     5、变量  {@appScope.db_UserName}: 值为 数据库用户名称. 如：ultranms
+ -->
+<menu-list>
+<!--  监控首页   -->
+<menu-root id="1" title="首页" i18n_name="common.index" parentId="0" oper="NMSW100000" isdisplay="true" isdefault="true"
+	url="{@appScope.ProjectUrl}/jsp/mainIndex/main.jsp" className="ico_head ico_index" icon=""  extstr1="" extstr2="">
+</menu-root>
+
+<!-- 拓扑管理  -->
+<menu-root id="2" title="拓扑管理" i18n_name="common.topoview" parentId="0" oper="NMSW10000" isdisplay="true" isdefault=""
+    url="{@appScope.ProjectUrl}/jsp/flexview/ytopoViewMain.jsp" className="ico_head ico_topo" icon=""  extstr1="" extstr2="">
+   
+   <!-- ### 二级节点 #### -->
+   <menu-two id="2-1" title="网络拓扑" i18n_name="common.topoview.network" parentId="2" oper="NMSW1000022" isdisplay="true" 
+     url="{@appScope.ProjectUrl}/jsp/flexview/ytopoViewMain.jsp" className="" icon=""  extstr1="" extstr2="" />
+   <menu-two id="2-2" title="业务影响" i18n_name="common.topoview.businessImpact" parentId="2" oper="NMSW1000023" isdisplay="true"
+     url="{@appScope.ProjectUrl}/jsp/flexview/bizImpactViewMain.jsp" className="" icon=""  extstr1="" extstr2="" /> 
+   <menu-two id="2-3" title="云中心拓扑" i18n_name="common.cloudCenter.topo" parentId="2" oper="NMSW1000025" isdisplay="true" 
+   	 url="{@appScope.ProjectUrl}/jsp/flexview/cytopoViewMain.jsp" className="" icon=""  extstr1="" extstr2="" />
+   <menu-two id="2-4" title="3D拓扑"   i18n_name="common.topoview.3dtopo" parentId="2" oper="NMSW1000026" isdisplay="true" 
+     url="{@appScope.ProjectUrl}/jsp/unity/topoUnityViewMain.jsp" className="" icon=""  extstr1="" extstr2="" />    
+   <!-- ### 二级节点 #### -->
+   
+</menu-root>
+
+
+<!-- 告警管理  -->
+<menu-root id="3" title="告警管理" i18n_name="common.alarmview" parentId="0" oper="NMSW11000" isdisplay="true" isdefault=""
+	url="{@appScope.ProjectUrl}/jsp/alarmview/alertViews/activeAlertViewMain.jsp?locatetopo=true" className="ico_head ico_warm" icon=""  extstr1="" extstr2="" >
+   
+   <!-- ### 二级节点 #### -->
+   <menu-two id="3-1" title="活动告警" i18n_name="common.alarmview.event.alarm" parentId="3" oper="NMSW1100002" isdisplay="true" 
+   	url="{@appScope.ProjectUrl}/jsp/alarmview/alertViews/activeAlertViewMain.jsp?locatetopo=true" className="" icon=""  extstr1="" extstr2=""/>
+   <menu-two id="3-2" title="实时告警" i18n_name="common.alarmview.event.realalarm" parentId="3" oper="NMSW1100004" isdisplay="true" 
+   	url="{@appScope.ProjectUrl}/jsp/alarmview/alertViews/activeAlertViewMain.jsp?viewModule=h5" className="" icon=""  extstr1="" extstr2=""/>    
+   <menu-two id="3-3" title="历史告警" i18n_name="common.alarmview.alarm.history" parentId="3" oper="NMSW1100003" isdisplay="true" 
+   	url="{@appScope.ProjectUrl}/jsp/alarmview/alertViews/hisAlertViewMain.jsp" className="" icon=""  extstr1="" extstr2=""/> 
+   <!-- ### 二级节点 #### -->  
+             
+</menu-root>
+
+
+<!-- 性能管理  -->
+<menu-root id="4" title="性能管理" i18n_name="common.perform" parentId="0" oper="NMSW12000" isdisplay="true" isdefault=""
+	url="{@appScope.ProjectUrl}/jsp/performance/performview/performViewMain.jsp" className="ico_head ico_perform" icon=""  extstr1="" extstr2="">
+   
+   <!-- ### 二级节点 #### -->
+   <menu-two id="4-1" title="性能查询" i18n_name="common.perform.performQuery" parentId="4" oper="NMSW1200004" isdisplay="true" 
+   	url="{@appScope.ProjectUrl}/jsp/performance/performview/performViewMain.jsp" className="" icon=""  extstr1="" extstr2=""/>
+   <menu-two id="4-2" title="性能看板" i18n_name="common.perform.performKanban" parentId="4" oper="NMSW1200005" isdisplay="true" 
+   	url="{@appScope.ProjectUrl}/jsp/dashboardview/dashboardView.jsp" className="" icon=""  extstr1="" extstr2=""/> 
+   <menu-two id="4-3" title="性能基线" i18n_name="common.perform.performBaseline" parentId="4" oper="NMSW1200006" isdisplay="true"
+    url="{@appScope.Url}/cmpbaseline/cmpline/inteChart.jsp" className="" icon=""  extstr1="" extstr2=""/>            
+   <menu-two id="4-4" title="我的视图" i18n_name="performance.perfTimelyQuery" parentId="4" oper="NMSW1200007" isdisplay="true" 
+    url="{@appScope.ProjectUrl}/jsp/perfTimelyQuery/perfTimelyQuery.jsp" className="" icon=""  extstr1="" extstr2=""/>            
+   <!-- ### 二级节点 #### -->      
+        
+</menu-root>
+
+
+<!-- 资源管理  -->
+<menu-root id="5" title="资源管理" i18n_name="common.resview" parentId="0" oper="NMSW13000" isdisplay="true" isdefault=""
+	url="{@appScope.ProjectUrl}/jsp/resview/baseview/resDeviceViewMain.jsp" className="ico_head ico_resource" icon=""  extstr1="" extstr2="">
+   
+   <!-- ### 二级节点 #### -->
+   <menu-two id="5-1" title="设备视图" i18n_name="common.resview.basic.view" parentId="5" oper="NMSW1300007" isdisplay="true" 
+   	url="{@appScope.ProjectUrl}/jsp/resview/baseview/resDeviceViewMain.jsp" className="" icon=""  extstr1="" extstr2=""/>
+   <menu-two id="5-2" title="工程视图" i18n_name="common.resview.project.view" parentId="5" oper="NMSW1300008" isdisplay="true" 
+   	url="{@appScope.ProjectUrl}/jsp/resview/projectview/project_index.jsp" className="" icon=""  extstr1="" extstr2=""/> 
+   <menu-two id="5-3" title="配置文件" i18n_name="common.configview.profile" parentId="5" oper="NMSW1300009" isdisplay="false" 
+   	url="" className="" icon=""  extstr1="" extstr2=""/>
+   <menu-two id="5-4" title="模型视图" i18n_name="common.configview.modelview" parentId="5" oper="NMSW1300010" isdisplay="true" 
+   	url="{@appScope.ProjectUrl}/jsp/resview/queryview/resModelViewMain.jsp" className="" icon=""  extstr1="" extstr2=""/>                       
+   <!-- ### 二级节点 #### -->      
+        
+</menu-root>
+
+
+<!-- 专题管理 -->
+<menu-root id="6" title="专题管理" i18n_name="common.specialSubject" parentId="0" oper="NMSW14000" isdisplay="true" isdefault=""
+	url="{@appScope.ProjectUrl}/jsp/sla/tasklist.jsp" className="ico_head ico_project" icon=""  extstr1="" extstr2="">
+   
+   <!-- ### 二级节点 #### -->
+   <menu-two id="6-1" title="服务响应" i18n_name="common.specialSubject.serviceResponse" parentId="6" oper="NMSW1400014" isdisplay="true" 
+   	url="{@appScope.ProjectUrl}/jsp/sla/tasklist.jsp" className="" icon=""  extstr1="" extstr2=""/>
+   <menu-two id="6-2" title="IP地址管理" i18n_name="common.specialSubject.IPAddress" parentId="6" oper="NMSW1400011" isdisplay="true" 
+   	url="{@appScope.Url}/ipman" className="" icon=""  extstr1="" extstr2=""/>   
+   <menu-two id="6-4" title="VPN管理" i18n_name="common.specialSubject.vpn" parentId="6" oper="NMSW1400013" isdisplay="true" 
+   	url="{@appScope.ProjectUrl}/jsp/vpnmanager/vpnLayout.jsp" className="" icon=""  extstr1="" extstr2=""/>                  
+   <!-- ### 二级节点 #### -->      
+        
+</menu-root>
+
+
+<!-- 系统维护 -->
+<menu-root id="7" title="系统维护" i18n_name="common.systemmaintenance" parentId="0" oper="NMSW15000" isdisplay="true" isdefault=""
+	url="{@appScope.ProjectUrl}/jsp/alertrules/alertRulesMain.jsp" className="ico_head ico_system" icon=""  extstr1="" extstr2="">
+   
+   <!-- ### 二级节点 #### -->
+   <menu-two id="7-1" title="告警策略" i18n_name="common.systemmaintenance.alarm.strategy" parentId="7" oper="NMSW1500014" isdisplay="true" 
+   	url="{@appScope.ProjectUrl}/jsp/alertrules/alertRulesMain.jsp" className="" icon=""  extstr1="" extstr2=""/>
+   <menu-two id="7-2" title="性能门限" i18n_name="common.systemmaintenance.threshold" parentId="7" oper="NMSW1500018" isdisplay="true" 
+   	url="{@appScope.ProjectUrl}/perform/thresholdAction!toThresholdList.action" className="" icon=""  extstr1="" extstr2=""/> 
+   <menu-two id="7-4" title="基线配置" i18n_name="common.systemmaintenance.baseline" parentId="7" oper="NMSW1500017" isdisplay="true" 
+   	url="{@appScope.Url}/cmpbaseline/cmpline/index.jsp" className="" icon=""  extstr1="" extstr2=""/> 
+   <menu-two id="7-5" title="采集策略" i18n_name="common.systemmaintenance.collect.strategy" parentId="7" oper="NMSW1500019" isdisplay="true" 
+   	url="{@appScope.ProjectUrl}/jsp/schedule/scheduleViewMain.jsp" className="" icon=""  extstr1="" extstr2=""/> 
+   <menu-two id="7-6" title="自管理" i18n_name="common.systemmaintenance.selfmanage" parentId="7" oper="NMSW1500020" isdisplay="true" 
+   	url="{@appScope.ProjectUrl}/jsp/selfmanage/selfmanageViewMain.jsp" className="" icon=""  extstr1="" extstr2=""/>                                 
+   <!-- ### 二级节点 #### -->      
+        
+</menu-root>
+
+
+<!-- 帮助 -->
+<menu-root id="8" title="帮助" i18n_name="common.help" parentId="0" oper="NMSW16000" isdisplay="true" isdefault=""
+	url="{@appScope.ProjectUrl}/help/VersionDisplayAction.action" className="ico_head ico_help" icon=""  extstr1="" extstr2="">
+   
+   <!-- ### 二级节点 #### -->
+   <menu-two id="8-1" title="版本说明" i18n_name="common.help.version.info" parentId="8" oper="NMSW1600018" isdisplay="true" 
+   	 url="{@appScope.ProjectUrl}/help/VersionDisplayAction.action" className="" icon=""  extstr1="" extstr2=""/>
+   <menu-two id="8-2" title="使用帮助" i18n_name="common.help.help.online" parentId="8" oper="NMSW1600019" isdisplay="true" 
+   	 url="{@appScope.Url}/nmshelp/index.html?stylepasm={@appScope.Style}" className="" icon=""  extstr1="" extstr2=""/> 
+   <menu-two id="8-3" title="关于" i18n_name="common.help.about" parentId="8" oper="NMSW1600020" isdisplay="true" 
+  	 url="{@appScope.ProjectUrl}/jsp/help/about.jsp" className="" icon=""  extstr1="" extstr2=""/>
+   <menu-two id="8-4" title="客户端" i18n_name="common.help.client" parentId="8" oper="NMSW1600021" isdisplay="true" 
+   	 url="{@appScope.ProjectUrl}/jsp/help/managecs.jsp" className="" icon=""  extstr1="" extstr2=""/>                       
+   <!-- ### 二级节点 #### -->      
+        
+</menu-root>
+
+</menu-list>

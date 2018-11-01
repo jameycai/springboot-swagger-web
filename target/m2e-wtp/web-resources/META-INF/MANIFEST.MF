@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: springboot-swagger-web
+Implementation-Version: 7.0.0
+Built-By: caijinpeng
+Implementation-Vendor-Id: com.ultrapower
+Build-Jdk: 1.8.0_151
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/springboot-swagger-web
+Created-By: Maven Integration for Eclipse
+

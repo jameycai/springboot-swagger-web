@@ -1,0 +1,71 @@
+[#--]全局变量[--]
+[#global basePath=request.contextPath]
+[#global jsPath=request.contextPath+"/static/js"]
+[#global stylePath=request.contextPath+"/static/style"]
+
+[#if Session?? && Session.skinType??]
+	[#global cssPath=request.contextPath+"/static/style/" + Session.skinType +"/css"]
+	[#global imagePath=request.contextPath+"/static/style/" + Session.skinType +"/images"]
+[#else]
+	[#global cssPath=request.contextPath+"/static/style/excellenceblue/css"]
+	[#global imagePath=request.contextPath+"/static/style/excellenceblue/images"]
+[/#if]
+
+
+
+[#macro baseStyle]
+[#--]jquery[--]
+<script src="${basePath}/static/js/jquery/jquery-3.2.1.min.js"></script>
+[#--]bootstrap-js[--]
+<script src="${basePath}/static/js/bootstrap/bootstrap.min.js"></script>
+[#--]Font Awesome[--]
+<link rel="stylesheet" href="${basePath}/static/fonts/fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="${basePath}/static/fonts/ionicons/css/ionicons.min.css">
+[#--]bootstrap-css[--]
+[#if Session?? && Session.skinType??]
+<link href="${stylePath}/${Session.skinType}/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="${stylePath}/${Session.skinType}/css/AdminLTE.css">
+<link rel="stylesheet" href="${stylePath}/${Session.skinType}/css/base.css">
+<link rel="stylesheet" href="${stylePath}/${Session.skinType}/css/goagentstyle.css">
+[#else]
+<link href="${stylePath}/excellenceblue/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="${stylePath}/excellenceblue/css/AdminLTE.css">
+<link rel="stylesheet" href="${stylePath}/excellenceblue/css/base.css">
+<link rel="stylesheet" href="${stylePath}/excellenceblue/css/goagentstyle.css">
+[/#if]
+[/#macro]
+
+
+
+
+[#macro commonStyle]
+[#--]jquery[--]
+<script src="${basePath}/static/js/jquery/jquery-3.2.1.min.js"></script>
+[#--]bootstrap-js[--]
+<script src="${basePath}/static/js/bootstrap/bootstrap.min.js"></script>
+[#--]AdminLTE App[--]
+<script src="${basePath}/static/js/AdminLTE/app.min.js"></script>
+<script src="${basePath}/static/js/AdminLTE/adminlte.js"></script>
+[#--]goagent[--]
+<script src="${basePath}/static/js/goagentjs.js"></script>
+
+[#--]Font Awesome[--]
+<link rel="stylesheet" href="${basePath}/static/fonts/fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="${basePath}/static/fonts/ionicons/css/ionicons.min.css">
+[#--]bootstrap-css[--]
+[#if Session?? && Session.skinType??]
+<link href="${stylePath}/${Session.skinType}/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="${stylePath}/${Session.skinType}/css/bootstrap/bootstrap-theme.css" rel="stylesheet">
+<link rel="stylesheet" href="${stylePath}/${Session.skinType}/css/AdminLTE.css">
+<link rel="stylesheet" href="${stylePath}/${Session.skinType}/css/_all-skins.css">
+<link rel="stylesheet" href="${stylePath}/${Session.skinType}/css/base.css">
+<link rel="stylesheet" href="${stylePath}/${Session.skinType}/css/goagentstyle.css">
+[#else]
+<link href="${stylePath}/excellenceblue/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="${stylePath}/excellenceblue/css/bootstrap/bootstrap-theme.css" rel="stylesheet">
+<link rel="stylesheet" href="${stylePath}/excellenceblue/css/AdminLTE.css">
+<link rel="stylesheet" href="${stylePath}/excellenceblue/css/_all-skins.css">
+<link rel="stylesheet" href="${stylePath}/excellenceblue/css/base.css">
+<link rel="stylesheet" href="${stylePath}/excellenceblue/css/goagentstyle.css">
+[/#if]
+[/#macro]

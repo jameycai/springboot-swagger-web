@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ultrapower.sbdemo.webapp.home.mapper.UserMapper">
+
+
+    <!-- 自定义返回结果集 -->
+   <resultMap id="userMap" type="com.ultrapower.sbdemo.webapp.home.model.UserBean">
+		<id property="userId" column="user_id" javaType="java.lang.Long"></id>
+		<result property="userAccount" column="account" javaType="java.lang.String"></result>
+		<result property="userName" column="user_name" javaType="java.lang.String"></result>
+		<result property="password" column="pass" javaType="java.lang.String"></result>
+		<result property="dept_id" column="dept_id" javaType="java.lang.String"></result>
+		<result property="business" column="business" javaType="java.lang.String"></result>
+		<result property="user_status" column="user_status" javaType="java.lang.Integer"></result>
+	</resultMap>
+	 
+	 
+	<!--#在生成SQL时，对于字符类型参数，会拼装引号
+         $在生成SQL时，不会拼装引号，可用于order by之类的参数拼装
+	  -->
+	<select id="getUsersByPager" parameterType="java.util.Map" resultMap="userMap">
+		<if test="dbType =='mysql'">
+			select * from security_rest_user where 1=1
+			<if test="userAccount != null">
+				and lower(account) like '%${userAccount}%'	
+			</if>
+			<if test="userName != null">
+				and lower(user_name) like '%${userName}%'	
+			</if>
+			<if test="fromIndex != 0 and toIndex!=0">
+			limit ${fromIndex}, ${toIndex}
+			</if>
+		</if>
+	    <if test="dbType =='oracle'">
+	    	select a1.* from (select security_rest_user.*, rownum rn from security_rest_user where 1=1
+			<if test="userAccount != null">
+				and lower(account) like '%${userAccount}%'	
+			</if>
+			<if test="userName != null">
+				and lower(user_name) like '%${userName}%'	
+			</if>) a1 
+			<if test="fromIndex != 0 and toIndex!=0">
+			where rn between ${fromIndex} and ${toIndex}
+			</if>
+	    </if>
+	    
+	</select>
+	
+	
+	<select id="getUserCount" parameterType="java.util.Map" resultType="int">
+		select count(*) from security_rest_user where 1=1 
+		<if test="userAccount != null">
+			and lower(account) like '%${userAccount}%'	
+		</if>
+		<if test="userName != null">
+			and lower(user_name) like '%${userName}%'	
+		</if>
+	</select>
+	
+ 
+</mapper>
